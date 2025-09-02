@@ -1,0 +1,18 @@
+{
+  "name": "express-drills",
+  "version": "1.0.0",
+  "description": "A collection of small projects to practice building servers with **Node.js** and **Express**.   Each exercise focuses on a core concept you’ll need to run a local Node server (like for hosting tools such as Foundry VTT).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
