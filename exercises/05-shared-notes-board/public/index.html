@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes Board</title>
+  </head>
+  <body>
+    <form action="/notes" method="post">
+      <label for="post">post body</label><br />
+      <input type="text" id="postbody" name="postbody" /><br />
+      <input id="submit" type="submit" value="Submit" />
+    </form>
+    <div class="board"></div>
+  </body>
+  <script>
+    const board = document.querySelector(".board");
+
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/notes");
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        const data = await res.json();
+        return data;
+      } catch (error) {
+        console.error("error: ", error);
+        return null;
+      }
+    };
+    const submit = document.getElementById("submit");
+    submit.addEventListener("click", async function () {
+      const notes = await fetchData();
+      notes.forEach((note) => {
+        const paragraph = document.createElement("p");
+
+        paragraph.innerText = note.postBody + ` @ ` + note.time;
+
+        board.appendChild(paragraph);
+      });
+    });
+  </script>
+</html>
